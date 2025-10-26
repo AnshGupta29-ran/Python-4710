@@ -1,3 +1,6 @@
+from flask import Flask 
+app = Flask(__name__)
+
 import streamlit as st
 import pandas as pd
 import datetime
