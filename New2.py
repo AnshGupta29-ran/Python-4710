@@ -1,15 +1,13 @@
-from flask import Flask 
-app = Flask(__name__)
+
 
 import pandas as pd
-import os
 from plotly.data import gapminder
 from dash import dcc, html, Dash, callback, Input, Output
 import plotly.express as px
 import plotly.graph_objects as go
 
 css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
-dash_app = Dash(__name__, server=app, url_base_pathname='/', external_stylesheets=css)
+app = Dash(__name__, external_stylesheets=css)
 
 
 
