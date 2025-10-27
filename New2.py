@@ -2,10 +2,6 @@ from flask import Flask
 app = Flask(__name__)
 
 import pandas as pd
-import datetime
-from PIL import Image
-import plotly.express as px
-import plotly.graph_objects as go
 import urllib
 print("Password/Enpoint IP for localtunnel is:", urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip("\n"))
 import os
@@ -17,8 +13,7 @@ import plotly.graph_objects as go
 
 css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
 app = Dash(name="Gapminder Dashboard", external_stylesheets=css)
-app = Dash(__name__)
-server = app.server
+
 
 ################### DATASET ####################################
 gapminder_df = gapminder(datetimes=True, centroids=True, pretty_names=True)
