@@ -2,8 +2,6 @@ from flask import Flask
 app = Flask(__name__)
 
 import pandas as pd
-import urllib
-print("Password/Enpoint IP for localtunnel is:", urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip("\n"))
 import os
 from plotly.data import gapminder
 from dash import dcc, html, Dash, callback, Input, Output
