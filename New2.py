@@ -7,8 +7,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
-
+app = Dash(name="Gapminder Dashboard", external_stylesheets=css);
 app = Dash(__name__)
+# expose Flask server for WSGI
+application = app.server
+
 
 
 
@@ -123,8 +126,6 @@ def update_life_exp_chart(continent, year):
 def update_map(var_map, year):
     return create_choropleth_map(var_map, year)
 
-# expose Flask server for WSGI
-application = app.server
 
 
 # if __name__ == "__main__":
