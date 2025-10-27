@@ -6,18 +6,12 @@ from dash import dcc, html, Dash, callback, Input, Output
 import plotly.express as px
 import plotly.graph_objects as go
 
-css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
-app = Dash(name="Gapminder Dashboard", external_stylesheets=css);
-app = Dash(__name__)
+css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"]
+app = Dash(__name__, external_stylesheets=css, suppress_callback_exceptions=True)
+server = app.server
 # expose Flask server for WSGI
-application = app.server
-
-
-
-
 ################### DATASET ####################################
-gapminder_df = gapminder()
-
+gapminder_df = gapminder(datetimes=True, centroids=True, pretty_names=True)
 gapminder_df["Year"] = gapminder_df.Year.dt.year
 
 #################### CHARTS #####################################
@@ -128,5 +122,5 @@ def update_map(var_map, year):
 
 
 
-# if __name__ == "__main__":
-  #  app.run(debug=True)
+ if __name__ == "__main__":
+    app.run(debug=True)
