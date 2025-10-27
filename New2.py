@@ -5,18 +5,19 @@ import pandas as pd
 import urllib
 print("Password/Enpoint IP for localtunnel is:", urllib.request.urlopen('https://ipv4.icanhazip.com').read().decode('utf8').strip("\n"))
 import os
-os.system('pip install dash')
 from plotly.data import gapminder
 from dash import dcc, html, Dash, callback, Input, Output
 import plotly.express as px
 import plotly.graph_objects as go
 
 css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
-app = Dash(name="Gapminder Dashboard", external_stylesheets=css)
+dash_app = Dash(__name__, server=app, url_base_pathname='/', external_stylesheets=css)
+
 
 
 ################### DATASET ####################################
-gapminder_df = gapminder(datetimes=True, centroids=True, pretty_names=True)
+gapminder_df = gapminder()
+
 gapminder_df["Year"] = gapminder_df.Year.dt.year
 
 #################### CHARTS #####################################
@@ -125,5 +126,5 @@ def update_life_exp_chart(continent, year):
 def update_map(var_map, year):
     return create_choropleth_map(var_map, year)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+  #  app.run(debug=True)
